@@ -14,6 +14,7 @@ let _store = {
     }
   ],
   iid: 0,
+  y: "show title",
   flag: false,
 };
 
@@ -56,6 +57,7 @@ AppDispatcher.register((payload) => {
 
   case Constants.SHOW_TITLE:
     _store.iid = _store.daata.id;
+    _store.y = _store.daata[1].title;
     Store.emit(CHANGE_EVENT);
     break;
   default:

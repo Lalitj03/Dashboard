@@ -50,7 +50,7 @@ export class Hello extends Component {
         </button>
         {this.state.daata[0].title}
         <div onClick={this._show}>
-        Click: {this.state.daata[x].title}
+        Click: {this.state.y}
         </div>
       </div>
 
