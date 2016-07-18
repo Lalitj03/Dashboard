@@ -15,3 +15,9 @@ export function getRandom() {
   });
   getRandomApi();
 }
+
+export function showTitle() {
+  AppDispatcher.handleViewAction({
+    actionType: Constants.SHOW_TITLE,
+  });
+}

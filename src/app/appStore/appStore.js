@@ -8,12 +8,12 @@ let _store = {
   daata:[
     {
       "userId": 5,
-      "id": 5,
+      "id": 0,
       "title": "title",
       "body": "body"
     }
   ],
-  iid: 1,
+  iid: 0,
   flag: false,
 };
 
@@ -37,7 +37,6 @@ const Store = new StoreClass();
 AppDispatcher.register((payload) => {
 
   const action = payload.action;
-
   switch (action.actionType) {
 
   case Constants.NEW_CALL:
@@ -46,6 +45,7 @@ AppDispatcher.register((payload) => {
     break;
 
   case Constants.SAVE_DATA:
+  console.log(action.response.id);
     _store.daata.push(action.response);
     _store.flag = false;
     Store.emit(CHANGE_EVENT);
@@ -54,6 +54,10 @@ AppDispatcher.register((payload) => {
   case Constants.GET_RANDOM:
     break;
 
+  case Constants.SHOW_TITLE:
+    _store.iid = _store.daata.id;
+    Store.emit(CHANGE_EVENT);
+    break;
   default:
     return true;
   }

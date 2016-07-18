@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import Request from 'request';
-import { addItem, getRandom } from './actions/actions.js';
+import { addItem, getRandom, showTitle } from './actions/actions.js';
 import Store from './appStore/appStore.js';
+
+let x = 0;
 
 export class Hello extends Component {
   constructor(props) {
@@ -31,6 +33,9 @@ export class Hello extends Component {
     getRandom();
   }
 
+  _show(){
+    showTitle();
+  }
 
   render() {
     return (
@@ -44,6 +49,9 @@ export class Hello extends Component {
           </span>&nbsp;From Server
         </button>
         {this.state.daata[0].title}
+        <div onClick={this._show}>
+        Click: {this.state.daata[x].title}
+        </div>
       </div>
 
     );
