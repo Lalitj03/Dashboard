@@ -5,14 +5,7 @@ import { EventEmitter } from 'events';
 const CHANGE_EVENT = 'change';
 
 let _store = {
-  daata:[
-    {
-      "userId": 5,
-      "id": 0,
-      "title": "title",
-      "body": "body"
-    }
-  ],
+  daata: [],
   iid: 0,
   y: "show title",
   flag: false,
@@ -46,8 +39,9 @@ AppDispatcher.register((payload) => {
     break;
 
   case Constants.SAVE_DATA:
-  console.log(action.response.id);
     _store.daata.push(action.response);
+    console.log(_store.daata[_store.daata.length-1].title);
+    console.log("length:  " + _store.daata.length);
     _store.flag = false;
     Store.emit(CHANGE_EVENT);
     break;
@@ -57,7 +51,7 @@ AppDispatcher.register((payload) => {
 
   case Constants.SHOW_TITLE:
     _store.iid = _store.daata.id;
-    _store.y = _store.daata[1].title;
+    _store.y = _store.daata[_store.daata.length-1].title;
     Store.emit(CHANGE_EVENT);
     break;
   default:

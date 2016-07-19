@@ -2,15 +2,16 @@ import React, {Component} from 'react';
 import Request from 'request';
 import { addItem, getRandom, showTitle } from './actions/actions.js';
 import Store from './appStore/appStore.js';
-
-let x = 0;
+import Abc from './api/api.js';
 
 export class Hello extends Component {
   constructor(props) {
       super(props);
-      this.state = {  xyz: "Hello how are you" };
+      //this.state = {  x: 0 };
       this._onChange = this._onChange.bind(this);
+      this.increment = this.increment.bind(this);
       this.state = Store.getList();
+      this.state = Abc.seti();
   }
 
   componentDidMount() {
@@ -37,6 +38,13 @@ export class Hello extends Component {
     showTitle();
   }
 
+  increment(){
+    this.setState(Abc.seti());
+  }
+
+  getid(){
+    return id;
+  }
   render() {
     return (
       <div>
@@ -48,7 +56,11 @@ export class Hello extends Component {
           <span className="glyphicon glyphicon-plus" aria-hidden="true">
           </span>&nbsp;From Server
         </button>
-        {this.state.daata[0].title}
+        <button type="button" onClick={this.increment} className="btn btn-link btn-block btn-lg">
+          <span className="glyphicon glyphicon-plus" aria-hidden="true">
+          </span>&nbsp;+
+        </button>Object No. :
+        <hr/>
         <div onClick={this._show}>
         Click: {this.state.y}
         </div>
